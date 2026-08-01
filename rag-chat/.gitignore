@@ -1,0 +1,24 @@
+# Java / Maven
+target/
+*.class
+*.jar
+!**/target/*.jar
+.mvn/
+.idea/
+*.iml
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Chroma persisted DB (auto-created on first run)
+pyrag/chroma_db/
+pyrag/.hf_cache/
+
+# OS
+.DS_Store
+Thumbs.db

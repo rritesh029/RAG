@@ -7,10 +7,14 @@ from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_text_splitters import CharacterTextSplitter
 
+import os
+os.system("cls")
+
+
 load_dotenv()
 
 model = ChatGroq(
-    model="llama-3.3-70b-versatile"
+    model="lllama-3.3-70b-versatile"
 )
 
 prompt= PromptTemplate(
