@@ -12,6 +12,8 @@ from langchain_classic.retrievers.contextual_compression import ContextualCompre
 from langchain_classic.retrievers.document_compressors import LLMChainExtractor
 from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEmbeddings
+
+from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 
@@ -74,7 +76,11 @@ vector_store= FAISS.from_documents(documents=docs, embedding=embedding_model,)
 
 base_retriver= vector_store.as_retriever(search_kwargs={"k":5})
 
-llm=model
+llm= ChatOpenAI(
+    model="openai/gpt-5.6-luna",
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+    base_url="https://openrouter.ai/api/v1",
+)
 compressor= LLMChainExtractor.from_llm(llm)
 compression_retriver=ContextualCompressionRetriever(
     base_retriever=base_retriver,

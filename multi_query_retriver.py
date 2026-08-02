@@ -6,6 +6,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_classic.retrievers.multi_query import MultiQueryRetriever
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
 
 
 import os
@@ -28,8 +29,10 @@ Document(page_content="Black holes bend spacetime and store immense gravitationa
 embedding_model = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
-model = ChatGroq(
-    model="gpt-3.5-turbo/gpt-oss-120b"
+model = ChatOpenAI(
+    model="openai/gpt-5.6-luna",
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+    base_url="https://openrouter.ai/api/v1",
 )
 
 # vector_store= Chroma(
